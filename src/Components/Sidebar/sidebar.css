@@ -3,9 +3,10 @@
 	flex-direction: column;
 	align-items: flex-start;
 	width: 15%;
-	font-size: 1.75rem;
+	font-size: 1.50rem;
 	border-right: black 2px solid;
 	height: 100%;
+	background: hsla(220deg, 80%, 85%, 1);
 }
 
 li {

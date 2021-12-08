@@ -2,5 +2,9 @@
 	display: flex;
 	justify-content: flex-start;
 	margin-left: 20px;
+	height: 80%;
+}
 
+.admin-container {
+	margin-right: 20px;
 }
