@@ -1,0 +1,21 @@
+.logo-main {
+	font-family: 'Russo One', sans-serif;
+	display: flex;
+	font-size: 3.5rem;
+}
+
+.logo-right-top {
+	font-size: 2rem;
+	height: 65%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-bottom: -8px;
+	padding-top: 5px;
+}
+
+.logo-right-bottom {
+	font-size: .75rem;
+	height: 35%;
+
+}
