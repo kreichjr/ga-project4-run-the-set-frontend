@@ -12,7 +12,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-family: 'Russo One', sans-serif; 
+  font-family: 'Russo One', sans-serif !important; 
 }
 
 header {

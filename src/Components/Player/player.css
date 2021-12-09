@@ -3,4 +3,36 @@
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
+	text-align: center;
 }
+
+.player-main h1 {
+	font-size: 4rem;
+}
+
+.player-main table {
+	width: 100%;
+	font-size: 2rem;
+	font-weight: 100;
+}
+
+.get-players {
+	width: 100%;
+}
+
+.message {
+	text-align: center;
+}
+
+.table-container {
+	position: relative;
+}
+
+.add-player-container {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+}
+
+
+

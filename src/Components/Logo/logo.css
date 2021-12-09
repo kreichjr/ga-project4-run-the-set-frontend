@@ -6,14 +6,23 @@
 	padding-right: 3px;
 }
 
+.logo-left {
+	display: flex;
+	align-items: center;
+}
+
+.logo-right {
+	padding-top: 36px;
+}
+
 .logo-right-top {
 	font-size: 2rem;
 	height: 65%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	margin-bottom: -8px;
-	padding-top: 5px;
+	margin-bottom: -16px;
+	
 }
 
 .logo-right-bottom {

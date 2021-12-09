@@ -8,9 +8,8 @@ export default function PlayerMain(props) {
 
 	return(
 		<div className='player-main'>
-			<h1>Player Main Page</h1>
-			<br/>
-			<div className='msg'>{msg}</div>
+			<h1>Players</h1>
+			<div className='message'><p>{msg}</p></div>
 			<br/>
 			{showGetPlayers && <GetPlayers setMsg={setMsg} baseUrl={props.baseUrl}/>}
 		</div>
