@@ -12,7 +12,7 @@
 
 .player-main table {
 	width: 100%;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 100;
 }
 
@@ -30,8 +30,8 @@
 
 .add-player-container {
 	position: absolute;
-	right: 1rem;
-	top: 1rem;
+	right: .5rem;
+	top: .5rem;
 }
 
 
