@@ -6,13 +6,11 @@ import MatchMain from '../Match/MatchMain.js'
 const baseUrl = process.env.REACT_APP_BASEURL || 'http://localhost:8000'
 
 export default function Content(props) {
-	const { data: charData,  
-			isPending: charIsPending 
-		} = useFetch(baseUrl + '/characters')
+	const { data: characters, isPending: charIsPending} = useFetch(baseUrl + '/characters')
 	
 	return(
 		<div className="content">
-			{(!charIsPending && props.playerPageActive) && <PlayerMain baseUrl={baseUrl}/>}
+			{(!charIsPending && props.playerPageActive) && <PlayerMain baseUrl={baseUrl} characters={characters}/>}
 			{(!charIsPending && props.matchPageActive) && <MatchMain />}
 		</div>
 		)

@@ -28,11 +28,32 @@
 	position: relative;
 }
 
-/*.add-player-container {
+
+
+.modal-container {
 	position: absolute;
-	right: .5rem;
-	top: .5rem;
-}*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.4);
+}
+
+.modal-content {
+	width: 50% !important;
+	height: 50%;
+}
+
+h2 {
+	padding-top: 2rem;
+}
+
+form div {
+	margin: 2rem;
+}
 
 
 
