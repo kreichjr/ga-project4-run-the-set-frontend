@@ -7,7 +7,6 @@ export default function GetPlayers(props) {
 
 	return(
 		<div className='get-players'>
-			
 			<div className='table-container'>	
 				<Table striped hover>
 					<thead>

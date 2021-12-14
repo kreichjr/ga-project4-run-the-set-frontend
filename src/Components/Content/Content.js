@@ -11,7 +11,7 @@ export default function Content(props) {
 	return(
 		<div className="content">
 			{(!charIsPending && props.playerPageActive) && <PlayerMain baseUrl={baseUrl} characters={characters}/>}
-			{(!charIsPending && props.matchPageActive) && <MatchMain />}
+			{(!charIsPending && props.matchPageActive) && <MatchMain baseUrl={baseUrl} character={characters}/>}
 		</div>
 		)
 }

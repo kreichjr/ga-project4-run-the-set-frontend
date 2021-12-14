@@ -1,0 +1,59 @@
+.match-main {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	text-align: center;
+}
+
+.match-main h1 {
+	font-size: 4rem;
+}
+
+.match-main table {
+	width: 100%;
+	font-size: 1rem;
+	font-weight: 100;
+}
+
+.get-matches {
+	width: 100%;
+}
+
+.message {
+	text-align: center;
+}
+
+.table-container {
+	position: relative;
+}
+
+
+
+.modal-container {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.4);
+}
+
+.modal-content {
+	width: 50% !important;
+	height: 50%;
+}
+
+h2 {
+	padding-top: 2rem;
+}
+
+form div {
+	margin: 2rem;
+}
+
+
+
