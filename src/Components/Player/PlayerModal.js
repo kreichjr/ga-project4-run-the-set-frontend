@@ -8,7 +8,7 @@ export default function PlayerModal(props) {
 	
 	return(
 		<div className='modal-container'>
-			<div className="modal-content">
+			<div className="modal-content" id='player-modal-content'>
 				<h2>{props.title}</h2>
 				<form>
 					<div>

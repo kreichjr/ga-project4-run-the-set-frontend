@@ -5,8 +5,11 @@
 	width: 15%;
 	font-size: 1.50rem;
 	border-right: black 2px solid;
-	height: 100%;
+	height: calc(100% - 72px);
 	background: hsla(220deg, 80%, 80%, 1);
+	position: fixed;
+	left: 0;
+	bottom: 0;
 }
 
 li {

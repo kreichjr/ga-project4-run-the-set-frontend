@@ -24,8 +24,12 @@
 	text-align: center;
 }
 
-.table-container {
+.match-main .table-container {
 	position: relative;
+	flex: 1 1 auto;
+	overflow-y: auto;
+	height: 88%;
+
 }
 
 
@@ -39,20 +43,58 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,.4);
+	background-color: rgba(0,0,0,.6);
 }
 
 .modal-content {
-	width: 50% !important;
-	height: 50%;
+	width: 45% !important;
+	height: 70%;
+}
+
+.form-container {
+	display: flex;
+	width: 100%;
+
+
+}
+
+.match-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.p1-form, .p2-form {
+	margin: 0 auto;
+}
+
+.rounds-won {
+	margin-bottom: 10px;
+}
+
+.winner-button {
+	margin-bottom: 5px;
 }
 
 h2 {
 	padding-top: 2rem;
 }
 
+fieldset {
+	border-width: 2px !important;
+    border-style: groove !important;
+    border-color: threedface !important;
+    border-radius: 5px;
+}
+
+
 form div {
-	margin: 2rem;
+	margin: 1rem;
+}
+
+select {
+	margin-bottom: 15px !important;
 }
 
 

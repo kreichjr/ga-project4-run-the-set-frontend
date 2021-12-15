@@ -32,7 +32,7 @@ export default function GetMatches(props) {
 										<td>{match.p1_rounds_won}</td>
 										<td>{match.p2_rounds_won}</td>
 										<td>{match.p1_is_winner ? match.player_1.name : match.player_2.name}</td>
-										<td><Button variant="outline-primary" size="sm">Edit</Button></td>
+										<td><Button variant="outline-primary" size="sm" onClick={(e) => {props.openModal("Edit Match", match.player_1.id, match.p1_char.id, match.player_2.id, match.p2_char.id, match.p1_rounds_won, match.p2_rounds_won, match.p1_is_winner, match.id)}}>Edit</Button></td>
 										<td><Button variant="outline-danger" disabled={false} size="sm" onClick={(e) => {props.deleteMatch(e, match.id)}}>Delete</Button></td>
 									</tr>
 								)

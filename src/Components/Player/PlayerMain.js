@@ -28,6 +28,10 @@ export default function PlayerMain(props) {
 
 	const closeModal = () => {
 		setShowModal(false)
+		setFormCharID(0)
+		setFormName('')
+		setModalTitle('')
+		setTargetPlayerID(0)
 	}
 
 	const handleSubmit = (e, name, charID) => {

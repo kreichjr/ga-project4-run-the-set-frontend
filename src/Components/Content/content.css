@@ -1,6 +1,9 @@
 .content {
 	width: 85%;
+	height: calc(100% - 72px);
 	display: flex;
 	flex-direction: column;
-	position: relative;
+	position: fixed;
+	bottom: 0;
+	right: 0;
 }
