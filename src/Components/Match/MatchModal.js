@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 
 export default function MatchModal(props) {
-	const [p1ID, setP1ID] = useState(props.initialState.p1ID)
-	const [p2ID, setP2ID] = useState(props.initialState.p2ID)
-	const [p1CharID, setP1CharID] = useState(props.initialState.p1CharID)
-	const [p2CharID, setP2CharID] = useState(props.initialState.p2CharID)
-	const [p1RoundsWon, setP1RoundsWon] = useState(props.initialState.p1RoundsWon)
-	const [p2RoundsWon, setP2RoundsWon] = useState(props.initialState.p2RoundsWon)
+	const [p1ID, setP1ID] = useState(String(props.initialState.p1ID))
+	const [p2ID, setP2ID] = useState(String(props.initialState.p2ID))
+	const [p1CharID, setP1CharID] = useState(String(props.initialState.p1CharID))
+	const [p2CharID, setP2CharID] = useState(String(props.initialState.p2CharID))
+	const [p1RoundsWon, setP1RoundsWon] = useState(String(props.initialState.p1RoundsWon))
+	const [p2RoundsWon, setP2RoundsWon] = useState(String(props.initialState.p2RoundsWon))
 	const [p1IsWinner, setP1IsWinner] = useState(props.initialState.p1IsWinner)
 	const [validation, setValidation] = useState(props.initialState.validation)
 	const [msg, setMsg] = useState('')
@@ -50,6 +50,9 @@ export default function MatchModal(props) {
 	}
 
 	const validateData = () => {
+		console.log({
+			p1ID, p2ID, p1CharID, p2CharID, p1RoundsWon, p2RoundsWon, p1IsWinner
+		})
 		if (p1ID === p2ID) {
 			setMsg('Players must not match')
 			setValidation(false)
@@ -62,17 +65,31 @@ export default function MatchModal(props) {
 			return	
 		}
 
-		if (!(p1IsWinner === null) && p1IsWinner && Number(p1RoundsWon) < Number(p2RoundsWon)) {
+		if (p1IsWinner === null) {
+			setMsg('A winner must be selected')
+			setValidation(false)
+			return			
+		}
+
+		if (p1IsWinner && Number(p1RoundsWon) < Number(p2RoundsWon)) {
 			setMsg('Winner has won less rounds than the opponent')
 			setValidation(false)
 			return		
 		}
 
-		if (!(p1IsWinner === null) && !p1IsWinner && Number(p1RoundsWon) > Number(p2RoundsWon)) {
+		if (!p1IsWinner && Number(p1RoundsWon) > Number(p2RoundsWon)) {
 			setMsg('Winner has won less rounds than the opponent')
 			setValidation(false)
 			return		
 		}
+
+		if ((p1IsWinner && Number(p1RoundsWon) != 2) || (!p1IsWinner && Number(p2RoundsWon) != 2)) {
+			setMsg('Winner must have 2 rounds won')
+			setValidation(false)
+			return	
+		}
+
+
 
 		setMsg('Ready to Submit')
 		setValidation(true)
@@ -116,7 +133,7 @@ export default function MatchModal(props) {
 							</fieldset>
 						</div>
 						<div className="p2-form">
-							<fieldset onClick={handleP2Click} style={(!(p1IsWinner === null) && !p1IsWinner) ? winnerStyle : loserStyle}>
+							<fieldset style={(!(p1IsWinner === null) && !p1IsWinner) ? winnerStyle : loserStyle}>
 								<legend>Player 2</legend>								
 								<label htmlFor='player-2'>Player</label><br/>
 								<select id='player-2' value={p2ID} onChange={(e) => {setP2ID(e.target.value)}}>

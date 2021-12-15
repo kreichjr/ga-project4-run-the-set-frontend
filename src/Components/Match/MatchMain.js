@@ -16,12 +16,13 @@ export default function MatchMain(props) {
 	const [p1RoundsWon, setP1RoundsWon] = useState(0)
 	const [p2RoundsWon, setP2RoundsWon] = useState(0)
 	const [p1IsWinner, setP1IsWinner] = useState(null)
+	const [validation, setValidation] = useState(false)
 
 	const {data: players} = useFetch(props.baseUrl + '/players')
 	const {data: matches, setData: setMatches,
 		msg, setMsg, isError, isPending} = useFetch(props.baseUrl + '/matches')
 
-	const generateComponentData = (validationState) => {
+	const generateComponentData = () => {
 		return {
 			p1ID,
 			p2ID,
@@ -30,11 +31,11 @@ export default function MatchMain(props) {
 			p1RoundsWon,
 			p2RoundsWon,
 			p1IsWinner,
-			validation: validationState
+			validation
 		}
 	}
 
-	const openModal = (text, p1, p1char, p2, p2char, p1rounds, p2rounds, winner, id) => {
+	const openModal = (text, p1, p1char, p2, p2char, p1rounds, p2rounds, winner, valid, id) => {
 		setModalTitle(text)
 		setP1ID(p1)
 		setP1CharID(p1char)
@@ -43,6 +44,7 @@ export default function MatchMain(props) {
 		setP1RoundsWon(p1rounds)
 		setP2RoundsWon(p2rounds)
 		setP1IsWinner(winner)
+		setValidation(valid)
 		setShowModal(true)
 	}
 
@@ -153,7 +155,8 @@ export default function MatchMain(props) {
 						p2CharID, 
 						p1RoundsWon, 
 						p2RoundsWon, 
-						p1IsWinner
+						p1IsWinner,
+						false
 						)
 				}}>Add Match</Button></div>
 			<br/>
@@ -174,7 +177,7 @@ export default function MatchMain(props) {
 					title={modalTitle} 
 					closeModal={closeModal}
 					handleSubmit={handleSubmit}
-					initialState={generateComponentData(true)}
+					initialState={generateComponentData()}
 					/>
 			}
 		</div>

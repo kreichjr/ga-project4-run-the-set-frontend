@@ -9,11 +9,8 @@ export default function GetMatches(props) {
 					<thead>
 						<tr>
 							<td>Player 1</td>
-							<td>Player 1 Character</td>
 							<td>Player 2</td>
-							<td>Player 2 Character</td>
-							<td>P1 Rounds Won</td>
-							<td>P2 Rounds Won</td>
+							<td>Score</td>
 							<td>Winner</td>
 							<td></td>
 							<td></td>
@@ -25,12 +22,9 @@ export default function GetMatches(props) {
 							props.matches.map((match) => {
 								return (
 									<tr key={match.id}>
-										<td>{match.player_1.name}</td>
-										<td>{match.p1_char.name}</td>
-										<td>{match.player_2.name}</td>
-										<td>{match.p2_char.name}</td>
-										<td>{match.p1_rounds_won}</td>
-										<td>{match.p2_rounds_won}</td>
+										<td>{match.player_1.name} ({match.p1_char.name})</td>
+										<td>{match.player_2.name} ({match.p2_char.name})</td>
+										<td>{match.p1_rounds_won}-{match.p2_rounds_won}</td>
 										<td>{match.p1_is_winner ? match.player_1.name : match.player_2.name}</td>
 										<td><Button variant="outline-primary" size="sm" onClick={(e) => {
 											props.openModal(
@@ -41,7 +35,8 @@ export default function GetMatches(props) {
 												match.p2_char.id, 
 												match.p1_rounds_won, 
 												match.p2_rounds_won, 
-												match.p1_is_winner, 
+												match.p1_is_winner,
+												true, 
 												match.id
 											)
 										}}>Edit</Button></td>
