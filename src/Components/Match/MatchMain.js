@@ -17,10 +17,21 @@ export default function MatchMain(props) {
 	const [p2RoundsWon, setP2RoundsWon] = useState(0)
 	const [p1IsWinner, setP1IsWinner] = useState(null)
 	const [validation, setValidation] = useState(false)
+	const [filterValidation, setFilterValidation] = useState(false)
+
+	const [filters, setFilters] = useState({})
 
 	const {data: players} = useFetch(props.baseUrl + '/players')
 	const {data: matches, setData: setMatches,
-		msg, setMsg, isError, isPending} = useFetch(props.baseUrl + '/matches')
+		msg, setMsg, isError, isPending, updateFetch} = useFetch(props.baseUrl + '/matches')
+
+	const styleHide = {
+		display: "none"
+	}
+
+	const styleShow = {
+		display: "inline"
+	}
 
 	const generateComponentData = () => {
 		return {
@@ -140,6 +151,38 @@ export default function MatchMain(props) {
 		fetchMe()
 	}
 
+	const handleFilterChange = (e) => {
+		const updatedFilters = {...filters, [e.target.name]: Number(e.target.value)}
+		setFilters(updatedFilters)
+	}
+
+	const validateFilters = () => {
+		if (!filters?.player) {
+			setFilterValidation(false)
+			return
+		}
+
+		if (filters.player === 0) {
+			setFilterValidation(false)
+			return
+		}
+
+		setFilterValidation(true)
+	}
+
+	useEffect(() => {
+		validateFilters()
+		if (filterValidation) {
+			updateFetch(`${props.baseUrl}/matches`, filters)
+		}
+	}, [filters])
+
+	useEffect(() => {
+		if (matches) {
+			updateFetch(`${props.baseUrl}/matches`, filters)
+		}
+	}, [filterValidation])
+
 	return(
 		<div className='match-main'>
 			<h1>Matches</h1>
@@ -158,8 +201,36 @@ export default function MatchMain(props) {
 						p1IsWinner,
 						false
 						)
-				}}>Add Match</Button></div>
-			<br/>
+				}}>Add Match</Button></div><br/>
+			<div className='filter-container'>
+				<div>
+					<label>Focused Player: </label>
+					<select name="player" value={filters?.player} onChange={handleFilterChange}>
+						<option value={0}></option>
+						{
+							players?.map((player) => <option key={"player" + player.id} value={player.id}>{player.name}</option>)
+						}
+					</select>
+				</div>
+				<div style={filterValidation ? styleShow : styleHide} id="char-filter">
+					<label>Character: </label>
+					<select name="char"value={filters?.char} onChange={handleFilterChange}>
+						<option value={0}></option>
+						{
+							props.characters?.map((char) => <option key={"char" + char.id} value={char.id}>{char.name}</option>)
+						}
+					</select>
+				</div>
+				<div style={filterValidation ? styleShow : styleHide} id="opponent-filter">
+					<label>Opponent: </label>
+					<select name="opponent" value={filters?.opponent} onChange={handleFilterChange}>
+						<option value={0}></option>
+						{
+							players?.map((player) => <option key={"opponent" + player.id} value={player.id}>{player.name}</option>)
+						}
+					</select>
+				</div>
+			</div>
 			{showGetMatches && 
 				<GetMatches 
 					matches={matches} 

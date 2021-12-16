@@ -28,7 +28,7 @@
 	position: relative;
 	flex: 1 1 auto;
 	overflow-y: auto;
-	height: 88%;
+	height: 32rem;
 
 }
 
@@ -75,6 +75,28 @@
 
 .winner-button {
 	margin-bottom: 5px;
+}
+
+.filter-container {
+	width: 75%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.filter-container label {
+	margin-right: 4px;
+}
+
+.filter-container div{
+	margin: 0 auto;
+}
+
+.char-filter {
+	display: none;
+}
+
+.opponent-filter {
+	display: none;
 }
 
 h2 {
