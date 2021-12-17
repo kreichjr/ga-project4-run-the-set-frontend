@@ -18,6 +18,7 @@ export default function MatchMain(props) {
 	const [p1IsWinner, setP1IsWinner] = useState(null)
 	const [validation, setValidation] = useState(false)
 	const [filterValidation, setFilterValidation] = useState(false)
+	const [targetMatchID, setTargetMatchID] = useState(0)
 
 	const [filters, setFilters] = useState({})
 
@@ -57,6 +58,9 @@ export default function MatchMain(props) {
 		setP1IsWinner(winner)
 		setValidation(valid)
 		setShowModal(true)
+		if (id) {
+			setTargetMatchID(id)
+		}
 	}
 
 	const closeModal = () => {
@@ -68,15 +72,16 @@ export default function MatchMain(props) {
 		setP1RoundsWon(0)
 		setP2RoundsWon(0)
 		setP1IsWinner(null)
+		setTargetMatchID(0)
 		setShowModal(false)
 	}
 
-	const handleSubmit = (e, body, id) => {
+	const handleSubmit = (e, body) => {
 		e.preventDefault()
 		if (modalTitle === "Add Match") {
 			addMatch(body)
 		} else if (modalTitle === "Edit Match") {
-			editMatch(body, id)
+			editMatch(body)
 		}
 	}
 
@@ -103,10 +108,10 @@ export default function MatchMain(props) {
 		fetchMe()
 	}
 
-	const editMatch = (updatedMatch, id) => {
+	const editMatch = (updatedMatch) => {
 		
 		async function fetchMe() {
-			const response = await fetch(props.baseUrl + `/matches/${id}`, {
+			const response = await fetch(props.baseUrl + `/matches/${targetMatchID}`, {
 				method: 'PUT',
 				body: JSON.stringify(updatedMatch),
 				headers: {
