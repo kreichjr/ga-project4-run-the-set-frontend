@@ -14,7 +14,13 @@
 
 li {
 	list-style: none;
-	margin: 20px 0
+	margin: 20px 0;
+	cursor: pointer !important;
+}
+
+li:hover {
+	color: hsla(0deg, 70%, 40%, 1) !important;
+	
 }
 
 ul {

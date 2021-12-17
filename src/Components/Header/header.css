@@ -9,3 +9,11 @@
 	margin-right: 20px;
 	font-size: 1.4rem;
 }
+
+a {
+	color: black !important;
+}
+
+a:hover {
+	color: hsla(0deg, 70%, 40%, 1) !important;
+}
